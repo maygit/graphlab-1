@@ -3,7 +3,7 @@ project(GraphLab)
 
 add_executable(pagerank pagerank.cpp)
 #add_executable(tsv_to_graphlab_bin tsv_to_graphlab_bin.cpp)
-
+#add_executable(pagerankapp pagerankapp.cpp)
 
 
 
