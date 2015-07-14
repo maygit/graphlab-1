@@ -12,6 +12,7 @@
 #include <graphlab/macros_def.hpp>
 #include <time.h>
 
+using namespace graphlab;
 // Constants for the algorithm. Better way would be to
 // pass them in the shared_data to the update function, but for
 // the simplicity of this example, we simply define them here.
@@ -79,9 +80,10 @@ void pagerank_init(gl_types::iscope &scope,
 				edata.weight = 1.0/outedges.size();
 		} 
 	}
+	/*
 	gl_types::update_task task(scope.vertex(), pagerank_update);
 	scheduler.add_task(task, 0);
-
+	*/
 } // end of pagerank init function
 
 
@@ -199,6 +201,7 @@ int main(int argc, char** argv) {
 	std::string savefile ;
 	std::string engine_type = "async";
 	size_t ncpus = 6;
+	gl_types::iengine* engine_ptr;
 	// Create a graphlab core
 	gl_types::core core;
 	clopts.attach_option("infile", &filename,
@@ -216,11 +219,11 @@ int main(int argc, char** argv) {
 	}
 	if(!clopts.is_set("infile")) {
 		std::cout << "Input file no provided!" << std::endl;
-		clopts.print_description();
-		return EXIT_FAILURE;
-	}
+		//clopts.print_description();
+		//return EXIT_FAILURE;
+		create_graph(core.graph());
+	}else if(!load_graph(filename, core.graph())) {
 		// Load the graph
-	if(!load_graph(filename, core.graph())) {
 		std::cout << "Error in parsing graph!" << std::endl;
 		return EXIT_FAILURE;
 	}
@@ -229,27 +232,23 @@ int main(int argc, char** argv) {
 
 	// Set the engine options
 	core.set_engine_options(clopts);
+	engine_ptr = core.engine_ptr();	
+	assert(typeid(*engine_ptr) == typeid(synchronous_engine<gl_types::graph>));
+	((synchronous_engine<gl_types::graph>*)engine_ptr)->set_update_function(pagerank_init);
+	timer t1;
+	t1.start();
+	engine_ptr->start();
+	((synchronous_engine<gl_types::graph>*)engine_ptr)->set_update_function(pagerank_update);
+	engine_ptr->start();
 
-	// Create a synthetic graph
-	//  create_graph(core.graph());
+	std::cout << "sync pagerank finished,engine runtime: " << t1.current_time() << " seconds." << std::endl;
+	std::cout << "sync pagerank total updates count: " <<engine_ptr->last_update_count() << std::endl; 
 
-	// Schedule all vertices to run pagerank update on the
-	// first round.
-	core.add_task_to_all(pagerank_init, 100.0);
-	std::cout<<"options passed!"<<std::endl;
-	//assert(false);
-	// Run the engine
-	double runtime = core.start();
 
-	// We are done, now output results.
-	std::cout << "async pagerank finished, engine runtime: " << runtime << " seconds." << std::endl;
-	std::cout << "async pagerank total updates count="<< core.last_update_count() <<std::endl;
-
-	
 	// And output 5 first vertices pagerank after dividing their value
 	// with the norm.
 	for(graphlab::vertex_id_t vid=0; vid<5 && vid<core.graph().num_vertices(); vid++) {
-		std::cout << "vertex_id=" << vid << "\tpagerank =" <<
+		std::cout << "vertex_id=" << vid << "\tpagerank = " <<
 			core.graph().vertex_data(vid).value << std::endl;
 	}
 	
@@ -275,31 +274,6 @@ int main(int argc, char** argv) {
 } // End of main
 
 
-  // Configuration information
-// std::string filename;
-
-//   clopts.attach_option("infile", &filename,
-//                        "PageRank input file. In src, dest, weight format.");
-// 
-//   // Parse the command line input
-//   if(!clopts.parse(argc, argv)) {
-//     std::cout << "Error in parsing input." << std::endl;
-//     return EXIT_FAILURE;
-//   }
-//   if(!clopts.is_set("infile")) {
-//     std::cout << "Input file no provided!" << std::endl;
-//     clopts.print_description();
-//     return EXIT_FAILURE;
-//   }
-
-// Load the graph
-//   if(!load_graph(filename, core.graph())) {
-//     std::cout << "Error in parsing graph!" << std::endl;
-//     return EXIT_FAILURE;
-//   }
-
-
-
 /**
  * Load a graph file specified in the format:
  *
@@ -322,22 +296,9 @@ bool load_graph(const std::string filename,
 	FILE* inf = fopen(filename.c_str(),"r");
 	assert(inf != NULL);
 
-	// std::ifstream fin(filename.c_str());
-	//if(!fin.good()) return false;
-	//	std::cout<<"fin is  good"<<std::endl;
-	// Loop through file reading each line
 	char s[1024];
 	size_t edgecount=0;
 	while(fgets(s, 1024, inf) != NULL) {
-		/*
-		   std::string line;
-		   std::getline(fin, line);
-		   if(line[0] == '#'){
-		   std::cout<<line<<std::endl;
-		   continue;
-		   }
-		   std::stringstream s(line);
-		   */
 		if(s[0] == '#' || s[0] == '%')
 			continue;
 		fixline(s);
