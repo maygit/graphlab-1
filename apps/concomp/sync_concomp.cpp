@@ -78,11 +78,11 @@ void concomp_init(gl_types::iscope &scope,
 		edge_data& edata = scope.edge_data(eid);
 		edata.weight = curmin;
 	}
-	/*	
+		
 	//std::cout<<"in wcc  init:::vertex_id="<<scope.vertex()<<"\t vertex_cid"<<scope.vertex_data().value<<std::endl;
-	gl_types::update_task task(scope.vertex(), concomp_update);
-	scheduler.add_task(task, 0);
-	*/
+	//gl_types::update_task task(scope.vertex(), concomp_update);
+	//scheduler.add_task(task, 0);
+	
 } // end of concomp init function
 
 
@@ -125,8 +125,8 @@ void concomp_update(gl_types::iscope &scope,
 	double residual = 100;		
 	foreach(graphlab::edge_id_t eid, scope.out_edge_ids()){
 		if(curmin < scope.edge_data(eid).weight){
-		//	std::cout<<"vertex id="<<scope.vertex()<<"\tcurmin="<<curmin<<"\t edge weight="<<scope.edge_data(eid).weight
-		//		<<"\t add target="<<scope.target(eid)<<"to schedule"<<std::endl;
+			//std::cout<<"vertex id="<<scope.vertex()<<"\tcurmin="<<curmin<<"\t edge weight="<<scope.edge_data(eid).weight
+			//	<<"\t add target="<<scope.target(eid)<<"to schedule"<<std::endl;
 			edge_data& edata = scope.edge_data(eid);
 			edata.weight = curmin;
 
@@ -137,7 +137,7 @@ void concomp_update(gl_types::iscope &scope,
 	}
 	foreach(graphlab::edge_id_t eid, scope.in_edge_ids()){
 		if(curmin < scope.edge_data(eid).weight){
-		//	std::cout<<"curmin="<<curmin<<"\t edge weight="<<scope.edge_data(eid).weight<<"\t add source to schedule"<<scope.target(eid)<<std::endl;
+			//std::cout<<"curmin="<<curmin<<"\t edge weight="<<scope.edge_data(eid).weight<<"\t add source to schedule"<<scope.source(eid)<<std::endl;
 			edge_data& edata = scope.edge_data(eid);
 			edata.weight = curmin;
 
@@ -146,6 +146,7 @@ void concomp_update(gl_types::iscope &scope,
 			scheduler.add_task(task, residual);
 		}	
 	}
+	//logger(LOG_INFO, "logger end of update vertex_id=%u",scope.vertex());
 	//std::cout<<"in wcc  end of update:::vertex_id="<<scope.vertex()<<"\tvertex_cid="<<scope.vertex_data().value<<std::endl;
 } // end of concomp update function
 
@@ -261,7 +262,8 @@ int main(int argc, char** argv) {
 	//((synchronous_engine<gl_types::graph>*)engine_ptr)->start_with_iteration_limit(10);
 	engine_ptr->start();	
 	((synchronous_engine<gl_types::graph>*)engine_ptr)->set_update_function(concomp_update);
-	engine_ptr->start();	
+	//engine_ptr->start();	
+	((synchronous_engine<gl_types::graph>*)engine_ptr)->start_with_iteration_limit(100);
 	// We are done, now output results.
 	std::cout << "sync wcc finished, runtime: " << t1.current_time() << " seconds." << std::endl;
 	std::cout<<"sync wcc total updates count:"<<engine_ptr->last_update_count()<<std::endl;
