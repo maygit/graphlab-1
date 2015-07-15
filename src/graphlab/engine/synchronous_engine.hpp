@@ -213,7 +213,7 @@ namespace graphlab {
       // abortion check
       if (cpuid == 0) {
         logger(LOG_INFO, "Iteration %d complete.", niterations);
-      }
+      }/*
       if (cpuid == 0 && 
           ((fixediterations == 0 && callback.add_task_called == false) ||
            (fixediterations > 0 && fixediterations == niterations)  ||
@@ -222,18 +222,42 @@ namespace graphlab {
            check_all_terminators()) ) {
         aborted = true;
         logger(LOG_INFO, "Aborting Synchronous Engine");
+      }*/
+		// condition changed! if the fixediterations is specified( >0 ) and all update vertices\
+		//don't add new task to schedule during an iteration,then the algorithm converged! by mzj
+		if (cpuid == 0 && //(fixediterations > 0 && callback.add_task_called == false)&&
+          ((fixediterations == 0 && callback.add_task_called == false) ||
+           (fixediterations > 0 && fixediterations == niterations)  ||
+		   (fixediterations > 0 && callback.add_task_called == false)||
+           (taskbudget > 0 && niterations * src.num_vertices() > taskbudget) || 
+           (timeout > 0 && _timer.current_time() > timeout)  || 
+           check_all_terminators()) ) {
+        aborted = true;
+        logger(LOG_INFO, "Aborting Synchronous Engine");
       }
-
+		/*else{
+			//assert(aborted == false);
+			aborted = false;
+		}
+		*/
+		//logger(LOG_INFO, "fixediterations=%d",fixediterations);
       iterationbarrier.wait();
+		/*
+		if(cpuid ==0 && fixediterations > 0)
+		assert(callback.add_task_called);
+		*/
       if (cpuid == 0) {
+		//logger(LOG_INFO, "graphs have been swapped add_task_called=%d", callback.add_task_called);
         scope_manager.swap_graphs();
+		//logger(LOG_INFO, "aborted=%d", aborted);
         callback.reset();
       }
-      
+		//logger(LOG_INFO, "aborted=%d", aborted);
       return !aborted;
     }
    
     void set_update_function(update_function_type u) {
+		logger(LOG_INFO, "set update function");
       updatefunc = u;
     }
    
@@ -280,10 +304,9 @@ namespace graphlab {
         data_manager->set_scope_factory(&scope_manager);
       }
 
-
       dest = src;
 
-
+	  aborted = false;
       niterations = 0;
       fixediterations = 0;
       if (numiterations>0) fixediterations= numiterations;
