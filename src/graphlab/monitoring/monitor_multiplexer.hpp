@@ -117,7 +117,7 @@ namespace graphlab {
     }
     
     
-    void scheduler_task_pruned(update_task_type task) { 
+    void scheduler_task_pruned(update_task_type task) {
       foreach (imonitor_type * child, children) {
         child->scheduler_task_pruned(task);
       }                                      

@@ -219,8 +219,8 @@ namespace graphlab {
       assert(_graph_ptr != NULL);
       return _graph_ptr->out_edge_ids(v);
     }
-
-    //! Get the source vertex of the edge id argument
+    
+	//! Get the source vertex of the edge id argument
     vertex_id_t source(edge_id_t edge_id) const {
       //      assert(_graph_ptr != NULL);
       return _graph_ptr->source(edge_id);
@@ -231,7 +231,27 @@ namespace graphlab {
       //       assert(_graph_ptr != NULL);
       return _graph_ptr->target(edge_id);
     }
-    
+	
+			
+	///////////////////////////////////////////////
+	//get veretex or edge data not by reference
+   	/*
+	vertex_data_type copy_vertex_data(){
+		return _graph_ptr->vertex_data(_vertex);	
+	} 
+	
+	edge_data_type copy_edge_data(edge_id_t eid){
+		return _graph_ptr->edge_data(eid);
+	}
+	*/
+	edge_data_type get_edge_data(edge_id_t eid){
+		return _graph_ptr->get_edge_data(eid);
+	}
+	void set_edge_data(edge_id_t eid, edge_data_type edata){
+		_graph_ptr->set_edge_data(eid , edata);
+	}
+	//////////////////////////////////////////////////
+	
     /**
      * \brief Get a mutable reference to the data associated with the
      * base vertex

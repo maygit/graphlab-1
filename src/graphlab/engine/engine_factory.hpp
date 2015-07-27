@@ -45,13 +45,13 @@ namespace graphlab {
     iengine<Graph>* new_engine(const std::string& engine,
                                Graph& _graph,
                                size_t ncpus) {
-      if(engine == "async") {
+      if(engine == "async" || engine == "asynchronous") {
         typedef asynchronous_engine<Graph, Scheduler, ScopeFactory> engine_type;
         return new engine_type(_graph, ncpus, engine_type::THREADED);
       } if(engine == "async_sim") {
         typedef asynchronous_engine<Graph, Scheduler, ScopeFactory> engine_type;
         return new engine_type(_graph, ncpus, engine_type::SIMULATED);
-      } else if(engine == "synchronous") {
+      } else if(engine == "synchronous" || engine == "sync") {
         typedef synchronous_engine<Graph> engine_type;
         return new engine_type(_graph, ncpus);     
       } else {
@@ -139,7 +139,7 @@ namespace graphlab {
       std::stringstream arg_strm(arguments);
       
       
-      if(engine == "synchronous") {
+      if(engine == "synchronous" || engine == "sync") {
         return new synchronous_engine<Graph>(_graph, ncpus);
       
       } else if(scheduler == "fifo") {

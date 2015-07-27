@@ -16,7 +16,7 @@
 // pass them in the shared_data to the update function, but for
 // the simplicity of this example, we simply define them here.
 
-#define termination_bound 1e-5
+#define termination_bound 1e-3
 #define damping_factor 0.85   // PageRank damping factor
 #define init_value  0.15	// initial PR value of each vertex
 /**

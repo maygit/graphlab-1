@@ -5,7 +5,31 @@ IF(APPLE)
 ENDIF(APPLE)
 
 
-project(GraphLab)
+
+set(CMAKE_C_COMPILER "/usr/local/bin/gcc")
+set(CMAKE_CXX_COMPILER "/usr/local/bin/g++")
+
+#set(CMAKE_C_COMPILER "/public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc")
+#set(CMAKE_CXX_COMPILER "/public/software/gcc/bin/x86_64-unknown-linux-gnu-g++")
+
+#set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")
+
+#if(CMAKE_COMPILER_IS_GNUCXX)
+#   execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+#   if (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+#        message(STATUS "C++11 activated.")
+#        add_definitions("-std=gnu++11")
+#   elseif(GCC_VERSION VERSION_GREATER 4.3 OR GCC_VERSION VERSION_EQUAL 4.3)
+#        message(WARNING "C++0x activated. If you get any errors update to a compiler which fully supports C++11")
+#        add_definitions("-std=gnu++0x")
+#   else ()
+#        message(FATAL_ERROR "C++11 needed. Therefore a gcc compiler with a version higher than 4.3 is needed.")   
+#   endif()
+#else(CMAKE_COMPILER_IS_GNUCXX)
+#   add_definitions("-std=c++11") 
+#endif(CMAKE_COMPILER_IS_GNUCXX)
+
+project(GraphLab CXX)
 
 cmake_minimum_required(VERSION 2.4)
 
@@ -14,7 +38,24 @@ set(CMAKE_MODULE_PATH ${GraphLab_SOURCE_DIR}/cmake)
 #set(CROSS_COMPILE_32_BIT 1)
 
 
+set(Boost_NO_SYSTEM_PATHS TRUE)
+if (Boost_NO_SYSTEM_PATHS)
+  #set(BOOST_ROOT "/usr/local")
+  set(BOOST_ROOT "/home/mzj/boost")
+  #set(BOOST_ROOT "/home/mzj/boost_1_53_0")
+  #set(BOOST_ROOT "/usr/hadoop-tmp/graphlab/deps/boost")
+  set(BOOST_INCLUDE_DIRS "${BOOST_ROOT}/include")
+  set(BOOST_LIBRARY_DIRS "${BOOST_ROOT}/lib")
+endif (Boost_NO_SYSTEM_PATHS)
+find_package(Boost REQUIRED regex date_time system filesystem thread graph program_options)
+include_directories(${BOOST_INCLUDE_DIRS})
+link_directories(${BOOST_LIBRARY_DIRS})
 
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS} ")
+#set(CMAKE_CXX_FLAGS "-std=gnu++11 ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")
+
+#set(CMAKE_CXX_FLAGS "-L/home/mzj/boost/lib")
+set(CMAKE_CXX_FLAGS "-lboost_program_options ${CMAKE_CXX_FLAGS}")
 
 # Use the Boost libraries
 FIND_PACKAGE(Boost 1.37 COMPONENTS 

@@ -234,6 +234,7 @@ namespace graphlab {
            check_all_terminators()) ) {
         aborted = true;
         logger(LOG_INFO, "Aborting Synchronous Engine");
+		std::cout<<"synchronous engine running iterations="<<niterations<<std::endl;
       }
 		/*else{
 			//assert(aborted == false);

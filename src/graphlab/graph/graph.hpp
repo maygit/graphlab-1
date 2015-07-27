@@ -22,7 +22,7 @@
 #include <algorithm>
 #include <functional>
 #include <fstream>
-
+#include <atomic>
 
 #include <boost/bind.hpp>
 
@@ -145,7 +145,8 @@ namespace graphlab {
      * efficiency of graphlab.  This is invoked by the engine at
      * start.
      */
-    void finalize() {    
+    void finalize() {
+		std::cout<<"finalize graph (sort)"<<std::endl;   
       // check to see if the graph is already finalized
       if(finalized) return;
       // Assert that the graph is not finalized 
@@ -395,7 +396,14 @@ namespace graphlab {
       assert(edge_id < edges.size());
       return edges[edge_id].data();
     }
-
+	EdgeData get_edge_data(edge_id_t edge_id){
+		assert(edge_id < edges.size());
+		return edges[edge_id].get_data();
+	}
+	void set_edge_data(edge_id_t edge_id , EdgeData edata){
+		assert(edge_id < edges.size());
+		edges[edge_id].set_data(edata);
+	}
     /** get the source of the edge */
     vertex_id_t source(edge_id_t edge_id) const {
       //      assert(edge_id < edges.size());
@@ -1015,7 +1023,13 @@ namespace graphlab {
         _source(source), _target(target)  { }
       edge(vertex_id_t source, vertex_id_t target, EdgeData data) : 
         _source(source), _target(target), _data(data) {}
-
+		EdgeData get_data(){
+			return _data.load(std::memory_order_relaxed);
+		}
+		void set_data(EdgeData edata){
+			//_data = edata;
+			_data.store(edata, std::memory_order_relaxed);
+		}
       bool operator<(const edge& other) const {
         return (_source < other._source) || 
           (_source == other._source && _target < other._target); 

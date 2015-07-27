@@ -1,7 +1,8 @@
 #!/bin/bash
 
 
-install_directory="/usr/local"
+#install_directory="/usr/local"
+install_directory="/home/mzj/mzj_graphlab"
 
 reldir="./release"
 debugdir="./debug"
@@ -20,15 +21,17 @@ if [ ! -d $profiledir ]; then
 fi
 
 cd $reldir
-cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=$install_directory ../.
+#cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_CXX_COMPILER=/usr/local/bin/g++ -D CMAKE_C_COMPILER=/usr/bin/gcc -D CMAKE_INSTALL_PREFIX=$install_directory ../.
+cmake -D CMAKE_BUILD_TYPE=Release   -D CMAKE_INSTALL_PREFIX=$install_directory ../.
 cd ..
 
 cd $debugdir
+#cmake -D CMAKE_BUILD_TYPE=Debug  -D CMAKE_CXX_COMPILER=/usr/local/bin/g++ -D CMAKE_C_COMPILER=/usr/bin/gcc -D CMAKE_INSTALL_PREFIX=$install_directory ../.
 cmake -D CMAKE_BUILD_TYPE=Debug  -D CMAKE_INSTALL_PREFIX=$install_directory ../.
 cd ..
 
 cd $profiledir
-cmake -D CMAKE_BUILD_TYPE=Release -D COMPILE_PROFILING=1  -D CMAKE_INSTALL_PREFIX=$install_directory ../.
+#cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_CXX_COMPILER=/usr/local/bin/g++ -D CMAKE_C_COMPILER=/usr/bin/gcc -D COMPILE_PROFILING=1  -D CMAKE_INSTALL_PREFIX=$install_directory ../.
+cmake -D CMAKE_BUILD_TYPE=Release  -D COMPILE_PROFILING=1  -D CMAKE_INSTALL_PREFIX=$install_directory ../.
 cd ..
-
 

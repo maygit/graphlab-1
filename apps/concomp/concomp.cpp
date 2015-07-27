@@ -275,7 +275,7 @@ int main(int argc, char** argv) {
 		}
 		fclose(outf);
 	}
-	
+	std::cout<<"program finished! end of main"<<std::endl;	
 	return EXIT_SUCCESS;
 } // End of main
 

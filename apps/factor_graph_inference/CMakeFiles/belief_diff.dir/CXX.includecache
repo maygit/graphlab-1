@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mzj/mzj_graphlab/graphlab-1/apps/factor_graph_inference/belief_diff.cpp
+cassert
+-
+cstdlib
+-
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+

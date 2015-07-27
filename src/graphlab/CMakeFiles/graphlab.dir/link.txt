@@ -1,0 +1,2 @@
+/usr/bin/ar cr libgraphlab.a  CMakeFiles/graphlab.dir/logger/logger.cpp.o CMakeFiles/graphlab.dir/factors/table_factor.cpp.o CMakeFiles/graphlab.dir/factors/binary_factor.cpp.o CMakeFiles/graphlab.dir/factors/unary_factor.cpp.o CMakeFiles/graphlab.dir/parallel/pthread_tools.cpp.o CMakeFiles/graphlab.dir/serialization/iarchive.cpp.o CMakeFiles/graphlab.dir/serialization/oarchive.cpp.o CMakeFiles/graphlab.dir/util/timer.cpp.o CMakeFiles/graphlab.dir/util/generics/any.cpp.o CMakeFiles/graphlab.dir/util/command_line_options.cpp.o
+/usr/bin/ranlib libgraphlab.a

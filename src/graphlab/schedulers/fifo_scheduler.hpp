@@ -76,6 +76,7 @@ namespace graphlab {
         if (monitor != NULL) {
           double priority = vertex_tasks.top_priority(ret_task.vertex());
           monitor->scheduler_task_scheduled(ret_task, priority);
+		 // std::cout<<"get a task to schedule priority============================="<<priority<<std::endl;
         }
         vertex_tasks.remove(ret_task);
         return sched_status::NEWTASK;
@@ -91,9 +92,11 @@ namespace graphlab {
         queue_lock.lock();
         task_queue.push(task);
         queue_lock.unlock();
+		//std::cout<<"======================fifo scheduler add vertex="<<task.vertex()<<" to schedule priority"<<priority<<std::endl;
         if (monitor != NULL) 
           monitor->scheduler_task_added(task, priority);
       } else {
+		//std::cout<<"+++++++++++++++++++fifo scheduler add vertex="<<task.vertex()<<" to schedule failed!!!!!!!!!!!!! it already exists"<<std::endl;
         if (monitor != NULL) 
           monitor->scheduler_task_pruned(task);
       }
@@ -108,6 +111,7 @@ namespace graphlab {
     } // end of add_tasks
 
     void add_task_to_all(update_function_type func, double priority) {
+		std::cout<<"fifo scheduler add all vertices to schedule"<<std::endl;
       for (vertex_id_t vertex = 0; vertex < numvertices; ++vertex){
         add_task(update_task_type(vertex, func), priority);
       }

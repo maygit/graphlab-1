@@ -174,41 +174,47 @@ namespace graphlab {
 
 
     /** Execute the engine */
-    void start() {
-      /**
-       * Prepare data structures for execution:
-       * 1) finalize the graph.
-       * 2) Reset engine fields
-       */
-      // Prepare the graph
-      graph.finalize();      
-      // Clear the update counts
-      std::fill(update_counts.begin(), update_counts.end(), 0);
-      // Reset timers
-      start_time_millis = lowres_time_millis();
-      last_check_millis = 0;
-      // Reset active flag
-      active = true;  
-      // Reset the last exec status 
-      termination_reason = EXEC_TASK_DEPLETION;
-      // Ensure that the data manager has the correct scope_factory
-      if(shared_data != NULL) shared_data->set_scope_factory(&scope_manager);
-      // Start any scheduler threads (if necessary)
-      scheduler.start();
-      
-      /**
-       * Depending on the execution type call the correct internal
-       * start
-       */
-      if(exec_type == THREADED) run_threaded();
-      else run_simulated();
-      
-      /**
-       * Run any necessary cleanup
-       */
-      // Allow the scheduler to free any threads
-      scheduler.stop();
-    } // End of start
+	void start() {
+		/**
+		 * Prepare data structures for execution:
+		 * 1) finalize the graph.
+		 * 2) Reset engine fields
+		 */
+		// Prepare the graph
+		graph.finalize();      
+		// Clear the update counts
+		std::fill(update_counts.begin(), update_counts.end(), 0);
+		// Reset timers
+		start_time_millis = lowres_time_millis();
+		last_check_millis = 0;
+		// Reset active flag
+		active = true;  
+		// Reset the last exec status 
+		termination_reason = EXEC_TASK_DEPLETION;
+		// Ensure that the data manager has the correct scope_factory
+		if(shared_data != NULL) shared_data->set_scope_factory(&scope_manager);
+		// Start any scheduler threads (if necessary)
+
+		//start time for updates!
+		graphlab::timer tim;
+		tim.start();	
+		scheduler.start();
+
+		/**
+		 * Depending on the execution type call the correct internal
+		 * start
+		 */
+		if(exec_type == THREADED) run_threaded();
+		else run_simulated();
+
+		/**
+		 * Run any necessary cleanup
+		 */
+		// Allow the scheduler to free any threads
+		scheduler.stop();
+		double time_elapsed = tim.current_time();
+		std::cout<<"asynchronous engine udpate time="<< time_elapsed <<std::endl;
+	} // End of start
 
 
     /**
@@ -408,6 +414,7 @@ namespace graphlab {
         case sched_status::NEWTASK :
           // If the status is new task than we must execute the task
           const vertex_id_t vertex = task.vertex();
+			//std::cout<<"add vertex id="<<vertex<<"to upate==========================="<<std::endl;
           assert(vertex < graph.num_vertices());
           assert(task.function() != NULL);
           // Lock the vertex to ensure that no other processor tries

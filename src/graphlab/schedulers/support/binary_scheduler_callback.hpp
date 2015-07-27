@@ -26,6 +26,7 @@ namespace graphlab {
     virtual ~binary_scheduler_callback() {}
   
     void add_task(update_task_type task, double priority) {
+		//logger(LOG_INFO,"task vertexid=%u",task.vertex());
       add_task_called = true;
     }
     /** Creates a collection of tasks on all the vertices in

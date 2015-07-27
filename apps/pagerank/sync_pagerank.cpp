@@ -17,7 +17,7 @@ using namespace graphlab;
 // pass them in the shared_data to the update function, but for
 // the simplicity of this example, we simply define them here.
 
-#define termination_bound 1e-5
+#define termination_bound 1e-3
 #define damping_factor 0.85   // PageRank damping factor
 #define init_value  0.15	// initial PR value of each vertex
 /**
@@ -239,8 +239,8 @@ int main(int argc, char** argv) {
 	t1.start();
 	engine_ptr->start();
 	((synchronous_engine<gl_types::graph>*)engine_ptr)->set_update_function(pagerank_update);
-	engine_ptr->start();
-
+	//engine_ptr->start();
+	((synchronous_engine<gl_types::graph>*)engine_ptr)->start_with_iteration_limit(100);
 	std::cout << "sync pagerank finished,engine runtime: " << t1.current_time() << " seconds." << std::endl;
 	std::cout << "sync pagerank total updates count: " <<engine_ptr->last_update_count() << std::endl; 
 
@@ -338,7 +338,7 @@ bool load_graph(const std::string filename,
 			assert(false);
 		}      
 		edgecount++;
-		if(edgecount %1000000 == 0)
+		if(edgecount %5000000 == 0)
 			std::cout<< edgecount <<" edges inserted"<<std::endl;
 	}
 	graph.finalize();

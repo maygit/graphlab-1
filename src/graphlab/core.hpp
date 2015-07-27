@@ -99,8 +99,14 @@ namespace graphlab {
       assert(success);
       return *mengine; 
     };
+	////////////////////////////////////////////////////////////
+	typename types::iengine* engine_ptr(){
+	  bool success = auto_build_engine();
+      assert(success);
+      return mengine; 
 
-    
+	}    
+	///////////////////////////////////////////////////////////
     /**
      * Get a reference to the scheduler associated with this core
      */
@@ -140,6 +146,7 @@ namespace graphlab {
      * Set the engine options by passing in an engine options object.
      */
     void set_engine_options(const engine_options& opts) {
+		opts.print();
       meopts = opts;
     }
 

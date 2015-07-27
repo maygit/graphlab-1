@@ -105,7 +105,7 @@ if (Boost_FIND_VERSION_EXACT)
   endif (Boost_FIND_VERSION_PATCH)
 else (Boost_FIND_VERSION_EXACT)
   set( _boost_TEST_VERSIONS ${Boost_ADDITIONAL_VERSIONS} 
-    "1.42" "1.41" "1.40" "1.39" "1.38" "1.37" "1.36.1" 
+    "1.49" "1.42" "1.41" "1.40" "1.39" "1.38" "1.37" "1.36.1" 
     "1.36.0" "1.36" "1.35.1" "1.35.0" "1.35" "1.34.1" 
     "1.34.0" "1.34" "1.33.1" "1.33.0" "1.33" )
 endif (Boost_FIND_VERSION_EXACT)
@@ -115,6 +115,7 @@ endif (Boost_FIND_VERSION_EXACT)
 # Boost.
 set(Boost_ERROR_REASON)
 
+#set(BOOST_ROOT "/home/mzj/boost")
 ############################################
 #
 # Check the existence of the libraries.

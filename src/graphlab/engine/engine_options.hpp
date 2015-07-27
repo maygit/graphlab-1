@@ -48,9 +48,9 @@ namespace graphlab {
 
     
     engine_options() :
-      ncpus(2),
+      ncpus(6),
       engine_type("async"),
-      scope_type("edge"),
+      scope_type("vertex"),
       scheduler_type("fifo") {
       // Grab all the compiler flags 
 #ifdef COMPILEFLAGS

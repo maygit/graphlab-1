@@ -94,14 +94,14 @@
 // TODO(jandrews): Also print the values in case of failure.  Requires some
 // sort of type-sensitive ToString() function.
 #define CHECK_OP(op, val1, val2)                                        \
-  do {                                                                  \
+  do { /*                                                                 \
     typeof(val1) v1 = val1;                                             \
     typeof(val2) v2 = (typeof(val2))val2;                               \
     if (!((v1) op (typeof(val1))(v2))) {                                \
       logstream(LOG_FATAL) << "Check failed: " << #val1 << #op << #val2 \
                            << "  [" << v1 << #op << v2 << "]\n";        \
       sleep(1);assert(false);                                           \
-    }                                                                   \
+    }    */                                                               \
   } while(0)
 
 #define CHECK_EQ(val1, val2) CHECK_OP(==, val1, val2)

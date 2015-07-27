@@ -1,0 +1,226 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-g++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1plus: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-g++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1plus: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-g++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1plus: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /public/software/gcc/bin/x86_64-unknown-linux-gnu-g++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1plus: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/x86_64-unknown-linux-gnu-gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[2]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[2]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[2]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec/fast] Error 2
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/public/software/gcc/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp/testCCompiler.c
+/public/software/gcc/libexec/gcc/x86_64-unknown-linux-gnu/4.8.2/cc1: error while loading shared libraries: libmpc.so.2: cannot open shared object file: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o] Error 1
+gmake[1]: Leaving directory `/home/mzj/mzj_graphlab/graphlab-1/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/local/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+No such file or directory
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/local/bin/gcc 
+Build flags: 
+Id flags: -c
+
+The output was:
+No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/local/bin/g++ 
+Build flags: 
+Id flags: 
+
+The output was:
+No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/local/bin/g++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+No such file or directory
+
+
+Determining if the C compiler works failed with the following output:
+
+
